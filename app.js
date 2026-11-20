@@ -1,5 +1,5 @@
-const SUPABASE_URL="YOUR_SUPABASE_URL";
-const SUPABASE_KEY="YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY";
+const SUPABASE_URL="https://fhsybbufrlmunfxrhseo.supabase.co";
+const SUPABASE_KEY="sb_publishable_4SnUg6PibU4jfZQkIKkyNw_YU5sYAwi";
 const db=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);let user=null,username="";const $=id=>document.getElementById(id);const esc=s=>{let d=document.createElement("div");d.textContent=s??"";return d.innerHTML};function msg(s){$("msg").textContent=s||""}
 $("signup").onclick=async()=>{let u=$("username").value.trim(),email=$("email").value.trim(),password=$("password").value;if(!u)return msg("Enter a username.");let {error}=await db.auth.signUp({email,password,options:{data:{username:u}}});msg(error?error.message:"Account created. Check your email if confirmation is enabled.")};
 $("login").onclick=async()=>{let {error}=await db.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});if(error)msg(error.message)};$("logout").onclick=()=>db.auth.signOut();
