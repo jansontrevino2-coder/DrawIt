@@ -1,4 +1,4 @@
-const SUPABASE_URL="YOUR_SUPABASE_URL";
+const SUPABASE_URL="https://fhsybbufrlmunfxrhseo.supabase.co";
 const SUPABASE_KEY="sb_publishable_4SnUg6PibU4jfZQkIKkyNw_YU5sYAwi";
 const db=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const $=id=>document.getElementById(id);let currentUser=null,currentProfile=null,posts=[],replies=[],profiles=new Map(),selectedPostId=null,tool="brush",drawing=false,canvasReady=false,history=[];
