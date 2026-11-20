@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DrawIt</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header><div class="header-inner"><button class="brand" data-page="feed">✏️ <b>DrawIt</b></button><div class="header-actions"><button id="profileButton" class="profile-chip hidden"><span id="headerAvatar" class="avatar small"></span><span id="headerName"></span></button><button id="logoutButton" class="ghost hidden">Sign out</button></div></div></header>
+<main>
+  <div id="message" class="message hidden"></div>
+  <section id="authPage" class="auth-card">
+    <div class="auth-icon">✏️</div><h1>Welcome to DrawIt</h1><p>Post text and reply with words or artwork.</p>
+    <input id="usernameInput" maxlength="30" placeholder="Username">
+    <input id="emailInput" type="email" placeholder="Email">
+    <input id="passwordInput" type="password" placeholder="Password">
+    <button id="signupButton" class="primary full">Create account</button><button id="loginButton" class="secondary full">Log in</button>
+  </section>
+  <section id="appPage" class="hidden">
+    <section id="feedPage" class="page active">
+      <div class="title"><h1>Feed</h1><p>Post something or reply with a drawing.</p></div>
+      <div class="composer"><div id="composerAvatar" class="avatar"></div><div class="composer-body"><textarea id="postInput" maxlength="500" placeholder="What's on your mind?"></textarea><div class="row"><span id="counter">0 / 500</span><button id="postButton" class="primary">Post</button></div></div></div>
+      <div id="feed"></div>
+    </section>
+    <section id="drawPage" class="page">
+      <div class="title"><h1>🎨 Draw</h1><p>Make a drawing reply.</p></div>
+      <div class="draw-card">
+        <div class="selected"><b>Replying to</b><div id="selectedPostContent">Choose “Draw Reply” on a post first.</div></div>
+        <div class="toolbar">
+          <button id="brushTool" class="tool active">✏️ Brush</button><button id="fillTool" class="tool">🪣 Fill</button><button id="eraserTool" class="tool">🧽 Eraser</button>
+          <label>Color <input id="brushColor" type="color" value="#111111"></label><label class="size-label">Size <input id="brushSize" type="range" min="2" max="40" value="6"></label>
+          <button id="undoButton" class="tool">↶ Undo</button><button id="clearButton" class="tool danger">Clear</button>
+        </div>
+        <div class="canvas-wrap"><canvas id="drawingCanvas"></canvas></div>
+        <div class="end-row"><button id="cancelDrawingButton" class="secondary">Cancel</button><button id="postDrawingButton" class="primary">Post drawing</button></div>
+      </div>
+    </section>
+    <section id="profilePage" class="page">
+      <div class="title"><h1>Profile</h1><p>Update your name and profile picture.</p></div>
+      <div class="profile-card"><div id="profilePreview" class="avatar profile-preview"></div><input id="avatarInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><input id="profileUsername" maxlength="30" placeholder="Username"><button id="saveProfileButton" class="primary full">Save profile</button><p class="hint">Avatar limit: 2 MB. PNG, JPG, WebP, or GIF.</p></div>
+    </section>
+  </section>
+</main>
+<nav id="bottomNav" class="bottom-nav hidden"><button class="nav active" data-page="feed">🏠<small>Feed</small></button><button class="nav" data-page="draw">🎨<small>Draw</small></button><button class="nav" data-page="profile">👤<small>Profile</small></button></nav>
+<script src="app.js"></script>
+</body></html>
